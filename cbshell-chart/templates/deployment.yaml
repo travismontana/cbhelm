@@ -165,7 +165,7 @@ spec:
                 {{- .Values.persistence.additionalMounts | toYaml | nindent 14 }}
               {{- end }}
             - mountPath: "/home/bob/.auth_key"
-              name: authorized_keys
+              name: authorizedkeys
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
@@ -182,7 +182,7 @@ spec:
               {{- if .Values.persistence.additionalVolumes }}
                 {{- .Values.persistence.additionalVolumes | toYaml | nindent 12}}
               {{- end }}
-        - name: authorized_keys
+        - name: authorizedkeys
           secret:
             secretName: {{ .Chart.Name}}-secret
       
