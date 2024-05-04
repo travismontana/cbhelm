@@ -73,7 +73,7 @@ spec:
               {{- if .Values.persistence.additionalMounts }}
                 {{- .Values.persistence.additionalMounts | toYaml | nindent 14 }}
               {{- end }}
-            - mountPath: "/home/bob/.auth_key"
+            - mountPath: "/home/bob/.ssh"
               name: authorizedkeys
       dnsPolicy: ClusterFirst
       restartPolicy: Always
