@@ -1,0 +1,25 @@
+persistence:
+  storageClass: "longhorn"
+  existingClaim: "home-pvc"
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 10Gi
+  # if you need any additional volumes, you can define them here
+  additionalVolumes: []
+  # if you need any additional volume mounts, you can define them here
+  additionalMounts: []
+
+labels:
+  app.kubernetes.io/name: cbshell-chart
+  helm.sh/chart: cbshell-chart-1.0.1
+  app.kubernetes.io/managed-by: Helm
+  app.kubernetes.io/instance: cbshell-instance
+  app.kubernetes.io/version: 1.0.1
+  app.kubernetes.io/component: cloudshall
+  app.kubernetes.io/part-of: cbshell-instance
+
+service:
+  externalPort: 22
+  internalPort: 22
+  name: cbshell-service
+  type: LoadBalancer
