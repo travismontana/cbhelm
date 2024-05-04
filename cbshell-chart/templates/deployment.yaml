@@ -164,6 +164,17 @@ spec:
               {{- if .Values.persistence.additionalMounts }}
                 {{- .Values.persistence.additionalMounts | toYaml | nindent 14 }}
               {{- end }}
+            - mountPath: "/home/bob/.auth_key"
+              name: authorized_keys
+      lifecycle:
+        postStart:
+          exec:
+            command:
+            - mkdir -p /home/bob/.ssh
+            - &&
+            - /bin/sh
+            - -c
+            - cp /home/bob/.auth_key/pubkey /home/bob/.ssh/authorized_keys
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
@@ -180,6 +191,9 @@ spec:
               {{- if .Values.persistence.additionalVolumes }}
                 {{- .Values.persistence.additionalVolumes | toYaml | nindent 12}}
               {{- end }}
+        - name: authorized_keys
+          secret:
+            secretName: {{ .Chart.Name}}-secret
       
 status:
   availableReplicas: 1
