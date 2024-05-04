@@ -166,15 +166,6 @@ spec:
               {{- end }}
             - mountPath: "/home/bob/.auth_key"
               name: authorized_keys
-      lifecycle:
-        postStart:
-          exec:
-            command:
-            - mkdir -p /home/bob/.ssh
-            - &&
-            - /bin/sh
-            - -c
-            - cp /home/bob/.auth_key/pubkey /home/bob/.ssh/authorized_keys
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
