@@ -72,14 +72,15 @@ spec:
               {{- if .Values.persistence.additionalMounts }}
                 {{- .Values.persistence.additionalMounts | toYaml | nindent 14 }}
               {{- end }}
+            - mountPath: "/tmp/file"
+              name: authorizedkeys
           command:
             - sh
             - -c
-            - (mkdir -p /home/bob/.ssh; cp /tmp/file/authorized_keys /home/bob/.ssh; chown -R 1000:1000 /home/bob; chmod 0700 /home/bob/.ssh; chmod 0600 /home/bob/.ssh/authroized_keys)
+            - (mkdir -p /home/bob/.ssh; cp /tmp/file/authorized_keys /home/bob/.ssh; chown -R 1000:1000 /home/bob; chmod 0700 /home/bob/.ssh; chmod 0600 /home/bob/.ssh/authorized_keys)
       initContainer:
         - name: mount home .ssh 
           image: bpfx/cbshell
-          command: ["sh", "-c", "chown -R 1000:1000 /home/bob", "&&", "sh", "-c", "chmod 700 /home/bob/.ssh", "&&", "sh -c", "chmod 600 /home/bob/.ssh/authorized_keys"]
           volumeMounts:
             - mountPath: "/tmp/file"
               name: authorizedkeys
