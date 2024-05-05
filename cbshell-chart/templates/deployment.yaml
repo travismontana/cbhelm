@@ -66,13 +66,19 @@ spec:
             runAsNonRoot: false
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
-          commands: ["sh", "-c", "chown -R 1000:1000 /home/bob"]
           volumeMounts:
             - mountPath: "/home"
               name: home
               {{- if .Values.persistence.additionalMounts }}
                 {{- .Values.persistence.additionalMounts | toYaml | nindent 14 }}
               {{- end }}
+            - mountPath: "/home/bob/.ssh"
+              name: authorizedkeys
+      initContainer:
+        - name: mount home .ssh 
+          image: bpfx/cbshell
+          command: ["sh", "-c", "chown -R 1000:1000 /home/bob", "&&", "sh", "-c", "chmod 700 /home/bob/.ssh", "&&", "sh -c", "chmod 600 /home/bob/.ssh/authorized_keys"]
+          volumeMounts:
             - mountPath: "/home/bob/.ssh"
               name: authorizedkeys
       dnsPolicy: ClusterFirst
