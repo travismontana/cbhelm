@@ -84,6 +84,7 @@ service:
   type: LoadBalancer
   externalPort: 80
   internalPort: 7878
+  targetPort: 7878
   name: 80to7878
   # externalTrafficPolicy: Local
   additionalPorts: []
