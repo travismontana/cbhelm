@@ -6,7 +6,7 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: {{ template "name" . }}
+  name: {{ .Chart.name }}
 {{- include "labels" . | indent 2 }}
 
 # Deployment specification
@@ -38,11 +38,11 @@ spec:
     matchLabels:
 {{- if .Values.usingNewRecommendedLabels }}
 {{- if .Values.labelsEnableDefault }}
-      app.kubernetes.io/name: {{ template "name" . }}
+      app.kubernetes.io/name: {{ .Chart.name }}
 {{- end }}
 {{- else }}
 {{- if .Values.labelsEnableDefault }}
-      app: {{ template "name" . }}
+      app: {{ .Chart.name }}
 {{- end }}
 {{- end }}
 
@@ -103,8 +103,8 @@ spec:
       containers:
 
         # The primary container for our service
-        - name: {{ template "name" . }}
-          image: "{{ template "get-repository" . }}:{{ template "get-release-tag" . }}"
+        - name: {{ .Chart.name }}
+          image: "{{ .Values.repository }}:{{ .Values.tag }}"
 {{- if and .Values.tty (eq (.Values.tty | toString) "true") }}
           stdin: true
           tty: true
@@ -474,7 +474,7 @@ SORRY for this mess, this is needed because of the above
 
 # Service Account creation
 {{- if or (eq .Values.serviceAccount.enabled true) (eq .Values.rbac.create true) }}
-      serviceAccountName: {{ template "name" . }}
+      serviceAccountName: {{ .Chart.name }}
 {{- end }}
 
 # This is our image pull secret references, if we have image pull secrets
