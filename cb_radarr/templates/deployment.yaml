@@ -7,7 +7,6 @@ kind: Deployment
 
 metadata:
   name: {{ .Chart.Name }}
-{{- include "labels" . | indent 2 }}
 
 # Deployment specification
 spec:
@@ -53,7 +52,6 @@ spec:
   # This is the podTemplate, the bread and butter
   template:
     metadata:
-{{- include "labels" . | indent 6 -}}
 {{- if .Values.podAnnotations }}
       annotations:
 {{- range $k, $v := .Values.podAnnotations }}
