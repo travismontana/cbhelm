@@ -6,7 +6,7 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: {{ .Chart.name }}
+  name: {{ .Chart.Name }}
 {{- include "labels" . | indent 2 }}
 
 # Deployment specification
@@ -38,11 +38,11 @@ spec:
     matchLabels:
 {{- if .Values.usingNewRecommendedLabels }}
 {{- if .Values.labelsEnableDefault }}
-      app.kubernetes.io/name: {{ .Chart.name }}
+      app.kubernetes.io/name: {{ .Chart.Name }}
 {{- end }}
 {{- else }}
 {{- if .Values.labelsEnableDefault }}
-      app: {{ .Chart.name }}
+      app: {{ .Chart.Name }}
 {{- end }}
 {{- end }}
 
@@ -103,7 +103,7 @@ spec:
       containers:
 
         # The primary container for our service
-        - name: {{ .Chart.name }}
+        - name: {{ .Chart.Name }}
           image: "{{ .Values.repository }}:{{ .Values.tag }}"
 {{- if and .Values.tty (eq (.Values.tty | toString) "true") }}
           stdin: true
@@ -428,7 +428,7 @@ spec:
                 - key: {{ if .Values.usingNewRecommendedLabels }}app.kubernetes.io/name{{ else }}app{{ end }}
                   operator: In
                   values:
-                  - {{ .Chart.name }}
+                  - {{ .Chart.Name }}
           - weight: 100
             podAffinityTerm:
               topologyKey: "failure-domain.beta.kubernetes.io/zone"
@@ -437,7 +437,7 @@ spec:
                 - key: {{ if .Values.usingNewRecommendedLabels }}app.kubernetes.io/name{{ else }}app{{ end }}
                   operator: In
                   values:
-                  - {{ .Chart.name }}
+                  - {{ .Chart.Name }}
 {{- /*
 SORRY for this mess, this is needed because of the above
 */}}
@@ -474,7 +474,7 @@ SORRY for this mess, this is needed because of the above
 
 # Service Account creation
 {{- if or (eq .Values.serviceAccount.enabled true) (eq .Values.rbac.create true) }}
-      serviceAccountName: {{ .Chart.name }}
+      serviceAccountName: {{ .Chart.Name }}
 {{- end }}
 
 # This is our image pull secret references, if we have image pull secrets
