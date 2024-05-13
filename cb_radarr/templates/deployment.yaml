@@ -50,7 +50,7 @@ spec:
     metadata:
 
     spec:
-
+      app.kubernetes.io/name: {{ .Chart.Name }}
       # If we have a hostname set, set it here
 {{- if .Values.hostname }}
       hostname: {{ with .Values.hostname }}{{ tpl . $ | quote }}{{- end }}
