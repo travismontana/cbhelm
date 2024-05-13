@@ -1,0 +1,11 @@
+apiVersion: v1
+name: cbradarr
+version: 1.0.0
+description: The CB Radarr deployment
+keywords:
+  - deployment
+  - helm
+  - radarr
+maintainers:
+  - name: Bob Bomar
+    email: bob@bomar.us
