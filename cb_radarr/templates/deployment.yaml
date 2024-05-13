@@ -39,15 +39,7 @@ spec:
   # These selectors to match this object with previous versions of this object
   selector:
     matchLabels:
-{{- if .Values.usingNewRecommendedLabels }}
-{{- if .Values.labelsEnableDefault }}
       app.kubernetes.io/name: {{ .Chart.Name }}
-{{- end }}
-{{- else }}
-{{- if .Values.labelsEnableDefault }}
-      app: {{ .Chart.Name }}
-{{- end }}
-{{- end }}
 
 {{- if .Values.labels }}
 {{ toYaml .Values.labels | indent 6 }}
