@@ -98,7 +98,8 @@ additionalPorts: []
   #   protocol: TCP
 
 # Additional pod annotations
-podAnnotations: 
+podAnnotations:
+  selector: app.kubernetes.io/name
   app.kubernetes.io/name: cbradarr
   app.kubernetes.io/managed-by: Helm
   app.kubernetes.io/instance: cbradarr-instance
