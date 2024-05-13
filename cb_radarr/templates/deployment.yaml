@@ -56,12 +56,7 @@ spec:
   # This is the podTemplate, the bread and butter
   template:
     metadata:
-{{- if .Values.podAnnotations }}
-      annotations:
-{{- range $k, $v := .Values.podAnnotations }}
-        {{ $k }}:  {{ with $v }}{{ tpl . $ | quote }}{{- end }}
-{{- end }}
-{{- end }}
+
     spec:
 
       # If we have a hostname set, set it here
