@@ -82,8 +82,8 @@ service:
   enabled: true
   annotations: {}
   type: LoadBalancer
-  port: 80
-  targetPort: 7878
+  externalPort: 80
+  internalPort: 7878
   name: 80to7878
   # externalTrafficPolicy: Local
   additionalPorts: []
