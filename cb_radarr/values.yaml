@@ -281,7 +281,7 @@ serviceAccount:
     # eks.amazonaws.com/role-arn: arn:aws:iam::123123123:role/role-name-goes-here
 
 # If we want a hostname set for this deployment
-hostname: "radarr.hangar.bpfx.org"
+hostname: "radarr"
 
 ## For RBAC support, enable if you want, and set the rules you wish, examples below
 rbac:
