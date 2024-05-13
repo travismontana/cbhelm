@@ -98,7 +98,13 @@ additionalPorts: []
   #   protocol: TCP
 
 # Additional pod annotations
-podAnnotations: {}
+podAnnotations: 
+  app.kubernetes.io/name: cbradarr
+  app.kubernetes.io/managed-by: Helm
+  app.kubernetes.io/instance: cbradarr-instance
+  app.kubernetes.io/version: 1.0.1
+  app.kubernetes.io/component: radarr
+  app.kubernetes.io/part-of: cbradarr-instance
   # tick: "1528451892"
 
 # If you're using Kubernetes 1.20+ you'll want to enable this, this uses the new common label scheme
