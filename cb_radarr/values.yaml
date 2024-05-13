@@ -108,7 +108,7 @@ usingNewRecommendedLabels: false
 
 # Additional labels put onto anything that can be labelled (pods, services)
 labels:
-  app.kubernetes.io/name: cbradarr-chart
+  app.kubernetes.io/name: cbradarr
   app.kubernetes.io/managed-by: Helm
   app.kubernetes.io/instance: cbradarr-instance
   app.kubernetes.io/version: 1.0.1
