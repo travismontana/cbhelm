@@ -72,7 +72,7 @@ ingress:
   pathType: ImplementationSpecific # or Prefix
   annotations: {}
   hosts:
-    - host: radarr.hangar.bpfx.org
+    - host: radarr
       paths:
         - /
   tls: []
