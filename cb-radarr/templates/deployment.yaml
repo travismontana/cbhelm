@@ -1,0 +1,21 @@
+apiVersion: app/v1
+kind: Deployment
+metadata:
+  labels:
+    {{- range $key, $val := .Values.labels }}
+    {{ $key }}: {{ $val | quote }}
+    {{- end}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cbradarr
+  template:
+    metadata:
+      app: cbradarr
+  spec:
+    containers:
+      - name: {{ .Chart.Name }}
+      image: ghcr.io/hotio/radarr:release
+    ports:
+      - containerPort: 7878

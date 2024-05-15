@@ -1,0 +1,7 @@
+labels:
+  app.kubernetes.io/name: cbradarr
+  app.kubernetes.io/managed-by: Helm
+  app.kubernetes.io/instance: cbradarr-instance
+  app.kubernetes.io/version: 0.0.0
+  app.kubernetes.io/component: cbradarr-component
+  app.kubernetes.io/part-of: cbshell
