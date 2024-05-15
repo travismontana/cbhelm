@@ -1,4 +1,3 @@
-{{- if not (lookup "v1" "PersistantVolume" .Release.Namespace .Chart.Name ) -}}
 kind: PersistentVolume
 apiVersion: v1
 metadata:
@@ -10,9 +9,6 @@ metadata:
     {{- end}}
 spec:
   storageClassName: {{ .Values.persistence.storageClass }}
-  claimRef:
-    name: {{ .Chart.Name }}-pvc
-    namespace: {{ .Release.Namespace }}
   capacity:
     storage: 10Gi
   volumeMode: Filesystem
@@ -23,4 +19,3 @@ spec:
     driver: driver.longhorn.io
     fsType: ext4
     volumeHandle: existing-longhorn-volume
-{{- end }}
