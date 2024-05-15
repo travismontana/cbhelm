@@ -8,3 +8,6 @@ labels:
 
 persistence:
   enabled: true
+  accessMode: ReadWriteOnce
+  size: 10Gi
+  storageClass: longhorn
