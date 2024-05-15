@@ -99,7 +99,6 @@ additionalPorts: []
 
 # Additional pod annotations
 podAnnotations:
-  selector: app.kubernetes.io/name
   app.kubernetes.io/name: cbradarr
   app.kubernetes.io/managed-by: Helm
   app.kubernetes.io/instance: cbradarr-instance

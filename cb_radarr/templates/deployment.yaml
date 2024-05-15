@@ -39,8 +39,7 @@ spec:
 
   # These selectors to match this object with previous versions of this object
   selector:
-    matchLabels:
-      app.kubernetes.io/name: {{ .Chart.Name }}
+    pp.kubernetes.io/name: {{ .Chart.Name }}
 
 {{- if .Values.labels }}
 {{ toYaml .Values.labels | indent 6 }}
