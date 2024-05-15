@@ -33,7 +33,7 @@ spec:
           volumeMounts: 
             - mountPath: "/config"
               name: {{ .Chart.Name }}-config
-          volumes:
-            - name: {{ .Chart.Name }}-config
-              persistentVolumeClaim:
-                claimName: {{ .Chart.Name }}-pvc
+        volumes:
+          - name: {{ .Chart.Name }}-config
+            persistentVolumeClaim:
+              claimName: {{ .Chart.Name }}-pvc
