@@ -15,7 +15,8 @@ spec:
   capacity:
     storage: 10Gi
   volumeMode: Filesystem
-  accessMode: ReadWriteOnce
+  accessModes: 
+    - ReadWriteOnce
   storageClassName: longhorn
   csi:
     driver: driver.longhorn.io
