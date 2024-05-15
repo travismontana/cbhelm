@@ -8,6 +8,7 @@ kind: Deployment
 metadata:
   name: {{ .Chart.Name }}
   labels:
+    app.kubernetes.io/name: {{ .Chart.Name }}
     {{- range $key, $val := .Values.labels }}
     {{ $key }}: {{ $val | quote }}
     {{- end}}
