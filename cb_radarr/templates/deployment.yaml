@@ -48,7 +48,8 @@ spec:
   # This is the podTemplate, the bread and butter
   template:
     metadata:
-
+      labels:
+        app.kubernetes.io/name: {{ .Chart.Name }}
     spec:
       labels:
         app.kubernetes.io/name: {{ .Chart.Name }}
