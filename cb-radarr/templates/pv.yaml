@@ -17,4 +17,6 @@ spec:
   volumeMode: Filesystem
   accessMode: ReadWriteOnce
   storageClassName: longhorn
+  csi:
+    fsType: ext4
 {{- end }}
