@@ -11,7 +11,8 @@ spec:
       app: cbradarr
   template:
     metadata:
-      app: cbradarr
+      labels:
+        app: cbradarr
   spec:
     containers:
       - name: {{ .Chart.Name }}
