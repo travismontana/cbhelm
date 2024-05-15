@@ -4,6 +4,10 @@ metadata:
   name: {{ .Chart.Name }}
   labels:
     app: cbradarr
+    {{- range $key, $val := .Values.labels }}
+    {{ $key }}: {{ $val | quote }}
+    {{- end}}
+
 spec:
   replicas: 1
   selector:
@@ -17,5 +21,10 @@ spec:
       containers:
         - name: {{ .Chart.Name }}
           image: ghcr.io/hotio/radarr:release
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 7878
+              protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
