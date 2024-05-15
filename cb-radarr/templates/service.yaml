@@ -17,3 +17,4 @@ spec:
     app.kubernetes.io/name: {{ .Chart.Name }}
   status:
     LoadBalancer: {}
+  type: LoadBalancer
