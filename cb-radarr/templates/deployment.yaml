@@ -17,5 +17,5 @@ spec:
     containers:
       - name: {{ .Chart.Name }}
       image: ghcr.io/hotio/radarr:release
-    ports:
-      - containerPort: 7878
+      ports:
+        - containerPort: 7878
