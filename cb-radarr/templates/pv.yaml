@@ -3,6 +3,7 @@ kind: PersistentVolume
 apiVersion: v1
 metadata:
  name: {{ .Chart.Name }}-pv
+ namespace: {{ .Release.Namespace }}
  labels:
     {{- range $key, $val := .Values.labels }}
     {{ $key }}: {{ $val | quote }}
