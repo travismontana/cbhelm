@@ -27,3 +27,7 @@ network:
   internalPort: 7878
   proto: TCP
   type: LoadBalancer
+
+dns:
+  fqdn: radarr.hangar.bpfx.org
+  ttl: 3600

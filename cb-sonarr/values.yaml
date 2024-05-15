@@ -27,3 +27,7 @@ network:
   internalPort: 8989
   proto: TCP
   type: LoadBalancer
+  
+dns:
+  fqdn: sonarr.hangar.bpfx.org
+  ttl: 3600
