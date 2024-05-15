@@ -6,8 +6,24 @@ labels:
   app.kubernetes.io/component: cbradarr-component
   app.kubernetes.io/part-of: cbshell
 
+container:
+  repo: ghcr.io/hotio
+  image: radarr
+  version: release
+  pull: IfNotPresent
+
+
 persistence:
   enabled: true
   accessMode: ReadWriteOnce
   size: 10Gi
   storageClass: longhorn
+
+storage:
+  mountPoint: /config
+
+network:
+  externalPort: 7878
+  internalPort: 7878
+  proto: TCP
+  type: LoadBalancer

@@ -3,16 +3,15 @@ kind: Service
 metadata:
   name: {{ .Chart.Name }}
   labels:
-    app: cbradarr
     {{- range $key, $val := .Values.labels }}
     {{ $key }}: {{ $val | quote }}
     {{- end}}
 
 spec:
   ports:
-    - port: 7878
+    - port: {{ .Values.network.externalPort }}
       protocol: TCP
-      targetPort: 7878
+      targetPort: {{ .Values.network.internalPort }}
   selector:
     app.kubernetes.io/name: {{ .Chart.Name }}
   type: LoadBalancer
