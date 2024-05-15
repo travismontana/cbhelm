@@ -1,0 +1,14 @@
+{{- if not (lookup "v1" "PersistantVolume" .Release.Namespace .Chart.Name ) -}}
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+ name: {{ .Chart.Name }}
+ labels:
+    {{- range $key, $val := .Values.labels }}
+    {{ $key }}: {{ $val | quote }}
+    {{- end}}
+spec:
+ storageClassName: {{ .Values.persistence.storageClass }}
+ claimRef:
+   name: {{ .Chart.Name }}-pvc
+   namespace: {{ .Release.Namespace }}
