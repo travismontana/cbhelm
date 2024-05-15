@@ -13,9 +13,9 @@ spec:
     metadata:
       labels:
         app: cbradarr
-  spec:
-    containers:
-      - name: {{ .Chart.Name }}
-        image: ghcr.io/hotio/radarr:release
-        ports:
-          - containerPort: 7878
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: ghcr.io/hotio/radarr:release
+          ports:
+            - containerPort: 7878
