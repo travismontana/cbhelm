@@ -8,7 +8,13 @@ metadata:
     {{ $key }}: {{ $val | quote }}
     {{- end}}
 spec:
- storageClassName: {{ .Values.persistence.storageClass }}
- claimRef:
-   name: {{ .Chart.Name }}-pvc
-   namespace: {{ .Release.Namespace }}
+  storageClassName: {{ .Values.persistence.storageClass }}
+  claimRef:
+    name: {{ .Chart.Name }}-pvc
+    namespace: {{ .Release.Namespace }}
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessMode: ReadWriteOnce
+  storageClassName: longhorn
+{{- end }}
