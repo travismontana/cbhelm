@@ -12,11 +12,13 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cbradarr
+      app.kubernetes.io/name: {{ .Chart.Name }}
   template:
     metadata:
       labels:
-        app: cbradarr
+        {{- range $key, $val := .Values.labels }}
+        {{ $key }}: {{ $val | quote }}
+        {{- end}}
     spec:
       containers:
         - name: {{ .Chart.Name }}
