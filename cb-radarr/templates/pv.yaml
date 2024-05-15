@@ -18,4 +18,5 @@ spec:
   csi:
     driver: driver.longhorn.io
     fsType: ext4
+    numberOfReplicas: 3
     volumeHandle: existing-longhorn-volume

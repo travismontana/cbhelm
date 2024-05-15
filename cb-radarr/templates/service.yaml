@@ -15,6 +15,4 @@ spec:
       targetPort: 7878
   selector:
     app.kubernetes.io/name: {{ .Chart.Name }}
-  status:
-    LoadBalancer: {}
   type: LoadBalancer
