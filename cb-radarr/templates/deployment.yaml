@@ -3,8 +3,8 @@ kind: Deployment
 metadata:
   name: {{ .Chart.Name }}
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: {{ .Values.dns.fqdn}}
-    external-dns.alpha.kubernetes.io/ttl: {{ .Values.dns.ttl }}
+    external-dns.alpha.kubernetes.io/hostname: "{{ .Values.dns.fqdn }}"
+    external-dns.alpha.kubernetes.io/ttl: "{{ .Values.dns.ttl }}"
   labels:
     app: cbradarr
     {{- range $key, $val := .Values.labels }}
