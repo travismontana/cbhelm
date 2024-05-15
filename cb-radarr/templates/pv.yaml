@@ -17,4 +17,4 @@ spec:
   volumeMode: Filesystem
   accessMode: ReadWriteOnce
   storageClassName: longhorn
-{{- end }}
+{{- end }}%
