@@ -4,9 +4,6 @@ metadata:
   name: {{ .Chart.Name }}
   labels:
     app: cbradarr
-    {{- range $key, $val := .Values.labels }}
-    {{ $key }}: {{ $val | quote }}
-    {{- end}}
 spec:
   replicas: 1
   selector:
