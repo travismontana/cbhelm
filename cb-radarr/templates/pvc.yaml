@@ -9,7 +9,6 @@ metadata:
     {{- end}}
 spec:
  storageClassName: {{ .Values.persistence.storageClass }}
- volumeName: {{ .Chart.Name }}-pv
  accessModes:
    - {{ .Values.persistence.accessMode | quote }}
  resources:
