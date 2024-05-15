@@ -10,8 +10,8 @@ metadata:
 spec:
   ports:
     - port: {{ .Values.network.externalPort }}
-      protocol: TCP
+      protocol: {{ .Values.network.proto }}
       targetPort: {{ .Values.network.internalPort }}
   selector:
     app.kubernetes.io/name: {{ .Chart.Name }}
-  type: LoadBalancer
+  type: {{ .Values.network.type }}
