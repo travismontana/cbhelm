@@ -5,3 +5,6 @@ labels:
   app.kubernetes.io/version: 0.0.0
   app.kubernetes.io/component: cbradarr-component
   app.kubernetes.io/part-of: cbshell
+
+persistence:
+  enabled: true
