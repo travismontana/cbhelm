@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}
+  labels:
+    app: cbradarr
+    {{- range $key, $val := .Values.labels }}
+    {{ $key }}: {{ $val | quote }}
+    {{- end}}
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ .Chart.Name }}
+  template:
+    metadata:
+      labels:
+        {{- range $key, $val := .Values.labels }}
+        {{ $key }}: {{ $val | quote }}
+        {{- end}}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: {{ .Values.container.repo }}/{{ .Values.container.image }}:{{ .Values.container.version }}
+          imagePullPolicy: {{ .Values.container.pull }}
+          ports:
+            - containerPort: {{ .Values.network.internalPort }}
+              protocol: {{ .Values.network.proto }}
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts: 
+            - mountPath: {{ .Values.storage.mountPoint }}
+              name: {{ .Chart.Name }}-config
+      volumes:
+        - name: {{ .Chart.Name }}-config
+          persistentVolumeClaim:
+            claimName: {{ .Chart.Name }}-pvc
