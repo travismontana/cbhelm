@@ -1,0 +1,29 @@
+labels:
+  app.kubernetes.io/name: cbsabnzbd
+  app.kubernetes.io/managed-by: Helm
+  app.kubernetes.io/instance: cbsabnzbd-instance
+  app.kubernetes.io/version: 0.0.1
+  app.kubernetes.io/component: cbsabnzbd-component
+  app.kubernetes.io/part-of: cbbase
+
+container:
+  repo: ghcr.io/hotio
+  image: sabnzbd
+  version: release
+  pull: IfNotPresent
+
+
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 10Gi
+  storageClass: longhorn
+
+storage:
+  mountPoint: /config
+
+network:
+  externalPort: 8080
+  internalPort: 8080
+  proto: TCP
+  type: LoadBalancer

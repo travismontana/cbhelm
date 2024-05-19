@@ -1,0 +1,5 @@
+apiVersion: v2
+name: cbsabnzbd
+description: Helm for sabnzbd, cb style
+type: application
+version: 0.0.4

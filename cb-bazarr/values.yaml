@@ -1,0 +1,29 @@
+labels:
+  app.kubernetes.io/name: cbbazarr
+  app.kubernetes.io/managed-by: Helm
+  app.kubernetes.io/instance: cbbazarr-instance
+  app.kubernetes.io/version: 0.0.1
+  app.kubernetes.io/component: cbbazarr-component
+  app.kubernetes.io/part-of: cbbase
+
+container:
+  repo: ghcr.io/hotio
+  image: bazarr
+  version: release
+  pull: IfNotPresent
+
+
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 10Gi
+  storageClass: longhorn
+
+storage:
+  mountPoint: /config
+
+network:
+  externalPort: 6767
+  internalPort: 6767
+  proto: TCP
+  type: LoadBalancer
